@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_filter_filters",
+  "info": {
+    "displayName": "Filter",
+    "icon": "filter"
+  },
+  "options": {},
+  "attributes": {
+    "Select": {
+      "type": "component",
+      "repeatable": true,
+      "component": "item.item"
+    },
+    "Type": {
+      "type": "component",
+      "repeatable": true,
+      "component": "button.button"
+    }
+  }
+}

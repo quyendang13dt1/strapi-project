@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_info_link_info_links",
+  "info": {
+    "displayName": "InfoLink",
+    "icon": "question"
+  },
+  "options": {},
+  "attributes": {
+    "Date": {
+      "type": "date"
+    },
+    "Links": {
+      "type": "component",
+      "repeatable": true,
+      "component": "item.item"
+    }
+  }
+}

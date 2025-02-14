@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_banner2_banner2s",
+  "info": {
+    "displayName": "Banner2",
+    "icon": "archive",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Image": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Name2": {
+      "type": "string"
+    }
+  }
+}

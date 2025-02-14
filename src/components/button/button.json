@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_button_buttons",
+  "info": {
+    "displayName": "Button",
+    "icon": "server",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Text": {
+      "type": "string"
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "white",
+        "black"
+      ]
+    },
+    "background": {
+      "type": "enumeration",
+      "enum": [
+        "white",
+        "black"
+      ]
+    },
+    "styleClass": {
+      "type": "enumeration",
+      "enum": [
+        "sm",
+        "md",
+        "xl"
+      ]
+    },
+    "linkRef": {
+      "type": "string"
+    }
+  }
+}

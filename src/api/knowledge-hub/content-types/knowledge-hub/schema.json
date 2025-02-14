@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "knowledge_hubs",
+  "info": {
+    "singularName": "knowledge-hub",
+    "pluralName": "knowledge-hubs",
+    "displayName": "Knowledge Hub",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Header": {
+      "type": "component",
+      "repeatable": false,
+      "component": "header.header"
+    },
+    "Banner": {
+      "type": "component",
+      "repeatable": false,
+      "component": "banner.banner"
+    },
+    "Filter": {
+      "type": "component",
+      "repeatable": false,
+      "component": "filter.filter"
+    },
+    "ListBlog": {
+      "type": "component",
+      "repeatable": true,
+      "component": "blog.blog"
+    },
+    "Banner2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "banner2.banner2"
+    },
+    "BannerDynamic": {
+      "type": "dynamiczone",
+      "components": [
+        "banner2.banner2",
+        "banner.banner"
+      ]
+    },
+    "Meida": {
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

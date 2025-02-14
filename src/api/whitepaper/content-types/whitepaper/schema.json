@@ -1,10 +1,11 @@
 {
   "kind": "collectionType",
-  "collectionName": "articles",
+  "collectionName": "whitepapers",
   "info": {
-    "singularName": "article",
-    "pluralName": "articles",
-    "displayName": "Article"
+    "singularName": "whitepaper",
+    "pluralName": "whitepapers",
+    "displayName": "Whitepaper",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -16,18 +17,8 @@
     },
     "infoLink": {
       "type": "component",
-      "repeatable": true,
+      "repeatable": false,
       "component": "info-link.info-link"
-    },
-    "Banner": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": false
     },
     "Content": {
       "type": "customField",
