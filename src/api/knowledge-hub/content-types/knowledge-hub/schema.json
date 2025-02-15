@@ -12,11 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "Header": {
-      "type": "component",
-      "repeatable": false,
-      "component": "header.header"
-    },
     "Banner": {
       "type": "component",
       "repeatable": false,
@@ -31,28 +26,6 @@
       "type": "component",
       "repeatable": true,
       "component": "blog.blog"
-    },
-    "Banner2": {
-      "type": "component",
-      "repeatable": false,
-      "component": "banner2.banner2"
-    },
-    "BannerDynamic": {
-      "type": "dynamiczone",
-      "components": [
-        "banner2.banner2",
-        "banner.banner"
-      ]
-    },
-    "Meida": {
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ],
-      "type": "media",
-      "multiple": true
     }
   }
 }

@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages_templates",
+  "info": {
+    "singularName": "pages-template",
+    "pluralName": "pages-templates",
+    "displayName": "Pages template",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "uid": {
+      "type": "uid"
+    },
+    "dynamic_components": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::dynamic-component.dynamic-component",
+      "mappedBy": "pages_template"
+    }
+  }
+}

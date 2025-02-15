@@ -2,11 +2,15 @@
   "collectionName": "components_item_items",
   "info": {
     "displayName": "Item",
-    "icon": "italic"
+    "icon": "italic",
+    "description": ""
   },
   "options": {},
   "attributes": {
     "Name": {
+      "type": "string"
+    },
+    "link": {
       "type": "string"
     }
   }

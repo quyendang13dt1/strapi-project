@@ -467,6 +467,50 @@ export interface ApiContentTypeContentType extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiDynamicComponentDynamicComponent
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'dynamic_components';
+  info: {
+    description: '';
+    displayName: 'DynamicComponent';
+    pluralName: 'dynamic-components';
+    singularName: 'dynamic-component';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Content: Schema.Attribute.DynamicZone<
+      [
+        'name.name',
+        'video.video',
+        'item.item',
+        'info-link.info-link',
+        'image.image',
+        'header.header',
+      ]
+    >;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::dynamic-component.dynamic-component'
+    > &
+      Schema.Attribute.Private;
+    Name: Schema.Attribute.String;
+    pages_template: Schema.Attribute.Relation<
+      'manyToOne',
+      'api::pages-template.pages-template'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiHeaderHeader extends Struct.SingleTypeSchema {
   collectionName: 'headers';
   info: {
@@ -511,15 +555,10 @@ export interface ApiKnowledgeHubKnowledgeHub
   };
   attributes: {
     Banner: Schema.Attribute.Component<'banner.banner', false>;
-    Banner2: Schema.Attribute.Component<'banner2.banner2', false>;
-    BannerDynamic: Schema.Attribute.DynamicZone<
-      ['banner2.banner2', 'banner.banner']
-    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Filter: Schema.Attribute.Component<'filter.filter', false>;
-    Header: Schema.Attribute.Component<'header.header', false>;
     ListBlog: Schema.Attribute.Component<'blog.blog', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -527,10 +566,6 @@ export interface ApiKnowledgeHubKnowledgeHub
       'api::knowledge-hub.knowledge-hub'
     > &
       Schema.Attribute.Private;
-    Meida: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -558,6 +593,40 @@ export interface ApiMenuMenu extends Struct.SingleTypeSchema {
       Schema.Attribute.Private;
     Page: Schema.Attribute.Component<'button.button', true>;
     publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
+export interface ApiPagesTemplatePagesTemplate
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'pages_templates';
+  info: {
+    description: '';
+    displayName: 'Pages template';
+    pluralName: 'pages-templates';
+    singularName: 'pages-template';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    dynamic_components: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::dynamic-component.dynamic-component'
+    >;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::pages-template.pages-template'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    uid: Schema.Attribute.UID;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1115,9 +1184,11 @@ declare module '@strapi/strapi' {
       'api::article.article': ApiArticleArticle;
       'api::blog.blog': ApiBlogBlog;
       'api::content-type.content-type': ApiContentTypeContentType;
+      'api::dynamic-component.dynamic-component': ApiDynamicComponentDynamicComponent;
       'api::header.header': ApiHeaderHeader;
       'api::knowledge-hub.knowledge-hub': ApiKnowledgeHubKnowledgeHub;
       'api::menu.menu': ApiMenuMenu;
+      'api::pages-template.pages-template': ApiPagesTemplatePagesTemplate;
       'api::whitepaper.whitepaper': ApiWhitepaperWhitepaper;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;

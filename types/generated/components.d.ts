@@ -53,6 +53,7 @@ export interface BlogBlog extends Struct.ComponentSchema {
     icon: 'apps';
   };
   attributes: {
+    article: Schema.Attribute.Relation<'oneToOne', 'api::article.article'>;
     content_types: Schema.Attribute.Relation<
       'oneToMany',
       'api::content-type.content-type'
@@ -135,8 +136,21 @@ export interface InfoLinkInfoLink extends Struct.ComponentSchema {
 export interface ItemItem extends Struct.ComponentSchema {
   collectionName: 'components_item_items';
   info: {
+    description: '';
     displayName: 'Item';
     icon: 'italic';
+  };
+  attributes: {
+    link: Schema.Attribute.String;
+    Name: Schema.Attribute.String;
+  };
+}
+
+export interface NameName extends Struct.ComponentSchema {
+  collectionName: 'components_name_names';
+  info: {
+    displayName: 'Name';
+    icon: 'twitter';
   };
   attributes: {
     Name: Schema.Attribute.String;
@@ -168,6 +182,7 @@ declare module '@strapi/strapi' {
       'image.image': ImageImage;
       'info-link.info-link': InfoLinkInfoLink;
       'item.item': ItemItem;
+      'name.name': NameName;
       'video.video': VideoVideo;
     }
   }

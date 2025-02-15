@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_name_names",
+  "info": {
+    "displayName": "Name",
+    "icon": "twitter"
+  },
+  "options": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    }
+  }
+}
