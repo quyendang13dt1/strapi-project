@@ -77,6 +77,7 @@ export interface ButtonButton extends Struct.ComponentSchema {
     color: Schema.Attribute.Enumeration<['white', 'black']>;
     linkRef: Schema.Attribute.String;
     styleClass: Schema.Attribute.Enumeration<['sm', 'md', 'xl']>;
+    Submenu: Schema.Attribute.Component<'item.item', true>;
     Text: Schema.Attribute.String;
   };
 }
@@ -143,6 +144,7 @@ export interface ItemItem extends Struct.ComponentSchema {
   attributes: {
     link: Schema.Attribute.String;
     Name: Schema.Attribute.String;
+    Submenu: Schema.Attribute.Component<'name.name', true>;
   };
 }
 
@@ -160,12 +162,14 @@ export interface NameName extends Struct.ComponentSchema {
 export interface VideoVideo extends Struct.ComponentSchema {
   collectionName: 'components_video_videos';
   info: {
+    description: '';
     displayName: 'Video';
     icon: 'television';
   };
   attributes: {
     Desc: Schema.Attribute.String;
     Link: Schema.Attribute.String;
+    Name: Schema.Attribute.String;
   };
 }
 

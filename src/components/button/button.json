@@ -34,6 +34,11 @@
     },
     "linkRef": {
       "type": "string"
+    },
+    "Submenu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "item.item"
     }
   }
 }
