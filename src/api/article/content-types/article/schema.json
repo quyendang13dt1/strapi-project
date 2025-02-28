@@ -39,6 +39,16 @@
         "preset": "standard"
       },
       "customField": "plugin::ckeditor.CKEditor"
+    },
+    "Order": {
+      "type": "customField",
+      "options": {
+        "group": {
+          "columnsNumber": 10,
+          "groupNameField": "Title"
+        }
+      },
+      "customField": "plugin::group-arrange-strapi-plugin.order"
     }
   }
 }

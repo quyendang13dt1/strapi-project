@@ -401,6 +401,16 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
       'api::article.article'
     > &
       Schema.Attribute.Private;
+    Order: Schema.Attribute.Integer &
+      Schema.Attribute.CustomField<
+        'plugin::group-arrange-strapi-plugin.order',
+        {
+          group: {
+            columnsNumber: 10;
+            groupNameField: 'Title';
+          };
+        }
+      >;
     publishedAt: Schema.Attribute.DateTime;
     Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
