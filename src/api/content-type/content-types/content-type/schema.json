@@ -13,12 +13,6 @@
   "attributes": {
     "Name": {
       "type": "string"
-    },
-    "blogs": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::blog.blog",
-      "mappedBy": "content_types"
     }
   }
 }

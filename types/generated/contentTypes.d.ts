@@ -382,15 +382,6 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   };
   attributes: {
     Banner: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
-    Content: Schema.Attribute.RichText &
-      Schema.Attribute.CustomField<
-        'plugin::ckeditor.CKEditor',
-        {
-          licenseKey: 'eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3NzExMTM1OTksImp0aSI6IjAyMGQwNDdkLWNiYTctNGIxYy05MjQzLTcwMTA0OTY1MTQ0MyIsInVzYWdlRW5kcG9pbnQiOiJodHRwczovL3Byb3h5LWV2ZW50LmNrZWRpdG9yLmNvbSIsImRpc3RyaWJ1dGlvbkNoYW5uZWwiOlsiY2xvdWQiLCJkcnVwYWwiXSwiZmVhdHVyZXMiOlsiRFJVUCJdLCJ2YyI6IjhiMmU5OWQ3In0.QlOp62DU7COEPrD4sk5NjiZ6bwRFiZexJ6BgGGyrssIhT7PEOxBwzmCTTgVwf5P4taxNpverg10t2KCY3YLuxg';
-          output: 'HTML';
-          preset: 'standard';
-        }
-      >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -400,46 +391,6 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
       'oneToMany',
       'api::article.article'
     > &
-      Schema.Attribute.Private;
-    Order: Schema.Attribute.Integer &
-      Schema.Attribute.CustomField<
-        'plugin::group-arrange-strapi-plugin.order',
-        {
-          group: {
-            columnsNumber: 10;
-            groupNameField: 'Title';
-          };
-        }
-      >;
-    publishedAt: Schema.Attribute.DateTime;
-    Title: Schema.Attribute.String;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiBlogBlog extends Struct.CollectionTypeSchema {
-  collectionName: 'blogs';
-  info: {
-    description: '';
-    displayName: 'Blog';
-    pluralName: 'blogs';
-    singularName: 'blog';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    content_types: Schema.Attribute.Relation<
-      'manyToMany',
-      'api::content-type.content-type'
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::blog.blog'> &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
     Title: Schema.Attribute.String;
@@ -460,7 +411,6 @@ export interface ApiContentTypeContentType extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    blogs: Schema.Attribute.Relation<'manyToMany', 'api::blog.blog'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -471,50 +421,6 @@ export interface ApiContentTypeContentType extends Struct.CollectionTypeSchema {
     > &
       Schema.Attribute.Private;
     Name: Schema.Attribute.String;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiDynamicComponentDynamicComponent
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'dynamic_components';
-  info: {
-    description: '';
-    displayName: 'DynamicComponent';
-    pluralName: 'dynamic-components';
-    singularName: 'dynamic-component';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    Content: Schema.Attribute.DynamicZone<
-      [
-        'name.name',
-        'video.video',
-        'item.item',
-        'info-link.info-link',
-        'image.image',
-        'header.header',
-      ]
-    >;
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::dynamic-component.dynamic-component'
-    > &
-      Schema.Attribute.Private;
-    Name: Schema.Attribute.String;
-    pages_template: Schema.Attribute.Relation<
-      'manyToOne',
-      'api::pages-template.pages-template'
-    >;
     publishedAt: Schema.Attribute.DateTime;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
@@ -614,60 +520,30 @@ export interface ApiKnowledgeHubKnowledgeHub
   };
 }
 
-export interface ApiMenuMenu extends Struct.SingleTypeSchema {
-  collectionName: 'menus';
+export interface ApiKnowledgeKnowledge extends Struct.SingleTypeSchema {
+  collectionName: 'knowledges';
   info: {
-    description: '';
-    displayName: 'Menu';
-    pluralName: 'menus';
-    singularName: 'menu';
+    displayName: 'Knowledge';
+    pluralName: 'knowledges';
+    singularName: 'knowledge';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    articles: Schema.Attribute.Relation<'oneToMany', 'api::article.article'>;
+    Banner: Schema.Attribute.Component<'banner.banner', false>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
-    locale: Schema.Attribute.String & Schema.Attribute.Private;
-    localizations: Schema.Attribute.Relation<'oneToMany', 'api::menu.menu'> &
-      Schema.Attribute.Private;
-    Page: Schema.Attribute.Component<'button.button', true>;
-    publishedAt: Schema.Attribute.DateTime;
-    updatedAt: Schema.Attribute.DateTime;
-    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-  };
-}
-
-export interface ApiPagesTemplatePagesTemplate
-  extends Struct.CollectionTypeSchema {
-  collectionName: 'pages_templates';
-  info: {
-    description: '';
-    displayName: 'Pages template';
-    pluralName: 'pages-templates';
-    singularName: 'pages-template';
-  };
-  options: {
-    draftAndPublish: true;
-  };
-  attributes: {
-    createdAt: Schema.Attribute.DateTime;
-    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
-      Schema.Attribute.Private;
-    dynamic_components: Schema.Attribute.Relation<
-      'oneToMany',
-      'api::dynamic-component.dynamic-component'
-    >;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
-      'api::pages-template.pages-template'
+      'api::knowledge.knowledge'
     > &
       Schema.Attribute.Private;
     publishedAt: Schema.Attribute.DateTime;
-    uid: Schema.Attribute.UID;
+    Title: Schema.Attribute.String;
     updatedAt: Schema.Attribute.DateTime;
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
@@ -1184,14 +1060,11 @@ declare module '@strapi/strapi' {
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
       'api::article.article': ApiArticleArticle;
-      'api::blog.blog': ApiBlogBlog;
       'api::content-type.content-type': ApiContentTypeContentType;
-      'api::dynamic-component.dynamic-component': ApiDynamicComponentDynamicComponent;
       'api::footer.footer': ApiFooterFooter;
       'api::header.header': ApiHeaderHeader;
       'api::knowledge-hub.knowledge-hub': ApiKnowledgeHubKnowledgeHub;
-      'api::menu.menu': ApiMenuMenu;
-      'api::pages-template.pages-template': ApiPagesTemplatePagesTemplate;
+      'api::knowledge.knowledge': ApiKnowledgeKnowledge;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
       'plugin::i18n.locale': PluginI18NLocale;
