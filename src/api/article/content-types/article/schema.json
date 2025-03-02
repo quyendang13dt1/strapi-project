@@ -30,6 +30,15 @@
         "videos",
         "audios"
       ]
+    },
+    "Content": {
+      "type": "customField",
+      "options": {
+        "output": "HTML",
+        "preset": "rich",
+        "licenseKey": "eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3NzExMTM1OTksImp0aSI6IjAyMGQwNDdkLWNiYTctNGIxYy05MjQzLTcwMTA0OTY1MTQ0MyIsInVzYWdlRW5kcG9pbnQiOiJodHRwczovL3Byb3h5LWV2ZW50LmNrZWRpdG9yLmNvbSIsImRpc3RyaWJ1dGlvbkNoYW5uZWwiOlsiY2xvdWQiLCJkcnVwYWwiXSwiZmVhdHVyZXMiOlsiRFJVUCJdLCJ2YyI6IjhiMmU5OWQ3In0.QlOp62DU7COEPrD4sk5NjiZ6bwRFiZexJ6BgGGyrssIhT7PEOxBwzmCTTgVwf5P4taxNpverg10t2KCY3YLuxg"
+      },
+      "customField": "plugin::ckeditor.CKEditor"
     }
   }
 }

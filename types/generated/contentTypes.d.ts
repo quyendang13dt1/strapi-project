@@ -382,6 +382,15 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
   };
   attributes: {
     Banner: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
+    Content: Schema.Attribute.RichText &
+      Schema.Attribute.CustomField<
+        'plugin::ckeditor.CKEditor',
+        {
+          licenseKey: 'eyJhbGciOiJFUzI1NiJ9.eyJleHAiOjE3NzExMTM1OTksImp0aSI6IjAyMGQwNDdkLWNiYTctNGIxYy05MjQzLTcwMTA0OTY1MTQ0MyIsInVzYWdlRW5kcG9pbnQiOiJodHRwczovL3Byb3h5LWV2ZW50LmNrZWRpdG9yLmNvbSIsImRpc3RyaWJ1dGlvbkNoYW5uZWwiOlsiY2xvdWQiLCJkcnVwYWwiXSwiZmVhdHVyZXMiOlsiRFJVUCJdLCJ2YyI6IjhiMmU5OWQ3In0.QlOp62DU7COEPrD4sk5NjiZ6bwRFiZexJ6BgGGyrssIhT7PEOxBwzmCTTgVwf5P4taxNpverg10t2KCY3YLuxg';
+          output: 'HTML';
+          preset: 'rich';
+        }
+      >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

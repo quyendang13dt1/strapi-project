@@ -27,12 +27,29 @@ module.exports = [
     config: {
       contentSecurityPolicy: {
         directives: {
-          "script-src": [
+          "script-src-elem": [
             "'self'",
-            "'unsafe-inline'",
             "https://cdn.ckeditor.com",
+            "https://share.synthesia.io",
           ],
-          "script-src-elem": ["'self'", "https://cdn.ckeditor.com"],
+          "frame-src": [
+            "'self'",
+            "https://www.youtube.com",
+            "https://www.youtube-nocookie.com",
+            "https://share.synthesia.io",
+          ],
+          "media-src": [
+            "'self'",
+            "data:",
+            "blob:",
+            "https://share.synthesia.io",
+          ],
+          "img-src": [
+            "'self'",
+            "data:",
+            "https://i.ytimg.com",
+            "https://share.synthesia.io",
+          ],
         },
       },
     },
