@@ -398,6 +398,7 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Desc: Schema.Attribute.Text;
     Iframe: Schema.Attribute.String;
     infoLink: Schema.Attribute.Component<'info-link.info-link', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
