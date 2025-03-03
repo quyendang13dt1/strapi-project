@@ -17,13 +17,13 @@ export default ({ env }) => ({
   preview: {
     enabled: true,
     config: {
-      allowedOrigins: ["http://localhost:4200/"],
+      allowedOrigins: ["https://strapi-6adc2.web.app/"],
       // http://147.93.107.27:8888
 
       async handler(uid, { documentId, locale, status }) {
         // const document = await strapi.documents(uid).findOne({ documentId });
         const pathname = getPreviewPathname(uid, documentId);
-        return `http://localhost:4200${pathname}?status=${status ? status : "published"}`;
+        return `https://strapi-6adc2.web.app${pathname}?status=${status ? status : "published"}`;
       },
     },
   },
