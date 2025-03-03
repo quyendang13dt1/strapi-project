@@ -391,9 +391,14 @@ export interface ApiArticleArticle extends Struct.CollectionTypeSchema {
           preset: 'rich';
         }
       >;
+    content_types: Schema.Attribute.Relation<
+      'manyToMany',
+      'api::content-type.content-type'
+    >;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    Iframe: Schema.Attribute.String;
     infoLink: Schema.Attribute.Component<'info-link.info-link', true>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
     localizations: Schema.Attribute.Relation<
@@ -420,6 +425,7 @@ export interface ApiContentTypeContentType extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    articles: Schema.Attribute.Relation<'manyToMany', 'api::article.article'>;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
